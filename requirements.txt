@@ -1,0 +1,3 @@
+llama-index
+pandas
+llama-index-llms-gemini
