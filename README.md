@@ -91,3 +91,6 @@ When a new user registers, the data service will record the user's selected pref
 The current prototype has a few flaws, including a small sample size, and time consuming pipelines. In production, we'll want to run through several samples in a batch, and aggregate their scores (using mean) with parallel processing. Specifically, the Simulation Agent, the Ground Truth Agent, and the Recommendation Agent can be run in parallel, using Airflow, Spark or the like, while the Evaluation Agent aggregates the scores to generate a feedback for the Prompt Optimizer Agent.
 
 In addition, for a production system, a test set should be created in addition to the randomly sampled data for the optimization process. This could be a data set generated once and used across days and weeks, or it could be a manually annotated data with human-labeled ground truth. A final precision score should be calculated on this data set as the final evaluation of the prompt.
+
+### Metrics
+In production, in addition to the precision of the recommendations, we may also care about whether top results are recommended as the first or second recommendations to the user. Hence we may adopt the Mean Reciprocal Rank (MRR) to calculate the score for the top result based on the rank they appear in the recommendation.
